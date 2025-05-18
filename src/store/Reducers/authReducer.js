@@ -37,21 +37,10 @@ async(info,{rejectWithValue, fulfillWithValue}) => {
 export const get_user_info = createAsyncThunk(
 'auth/get_user_info',
 async(_,{rejectWithValue, fulfillWithValue}) => {
-    /*
     try {
         const {data} = await api.get('/get-user',{withCredentials: true})
         // console.log(data)
         return fulfillWithValue(data)
-        */
-    try {
-      const token = localStorage.getItem('accessToken')
-      const { data } = await api.get('/get-user', {
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      return fulfillWithValue(data)
     } catch (error) {
         // console.log(error.response.data)
         return rejectWithValue(error.response.data)
